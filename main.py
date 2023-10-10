@@ -1,46 +1,14 @@
-# def merge_lists_to_dict(list_one, list_two):
-#     return dict(zip(list_one, list_two))
+set_one = {10, 'abc', 50, True}
+set_two = {'abc', 10, 50, True}
 
+print(set_one == set_two)  # True
+print(set_one.__eq__(set_two))  # True
 
-# res_one = merge_lists_to_dict(['a', 'b', 'c'], [10, True, []])
-# print(res_one)
+print(set_one is set_two)  # False
 
-# res_two = merge_lists_to_dict(['abc'], [{}, True, 100])
-# print(res_two)
+print('abc' in set_one)  # True
+print(10 in set_two)  # True
+print(1000 in set_one)  # False
+# # TypeError: unhashable type: 'list'
+# print([] in set_one)
 
-# res_three = merge_lists_to_dict(['a', True, 100], ['abc'])
-# print(res_three)
-
-
-#  ========================================================================================================================================================
-
-# def merge_lists_to_dict(list_one, list_two):
-#     return dict(zip(list_one, list_two))
-
-
-# res_one = merge_lists_to_dict(
-#     list_one=['a', 'b', 'c'], list_two=[10, True, []])
-# print(res_one)
-
-# res_two = merge_lists_to_dict(list_two=[{}, True, 100], list_one=['abc'])
-# print(res_two)
-
-# res_three = merge_lists_to_dict(['a', True, 100], list_two=['abc'])
-# print(res_three)
-
-# # # Error - SyntaxError: positional argument follows keyword argument
-# # res_three = merge_lists_to_dict(list_two=['abc'], ['a', True, 100])
-# # print(res_three)
-
-
-#  ========================================================================================================================================================
-
-# def update_car_info(**car):
-#     car['is_available'] = True
-#     return car
-
-
-# print(update_car_info(brand='BMW', price=100000))
-
-# # # TypeError: update_car_info() takes 0 positional arguments but 2 were given
-# # print(update_car_info('BMW', 100000))

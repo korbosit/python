@@ -1,14 +1,22 @@
-set_one = {10, 'abc', 50, True}
-set_two = {'abc', 10, 50, True}
+def image_info(img):
+    if ('image_id' not in img) or ('image_title' not in img):
+        raise TypeError("Keys image_id and image_title must be present")
+    return f"Image '{img['image_title']}' has id {img['image_id']}"
 
-print(set_one == set_two)  # True
-print(set_one.__eq__(set_two))  # True
 
-print(set_one is set_two)  # False
+print(image_info({'image_title': 'My cat', 'image_id': 123}))
 
-print('abc' in set_one)  # True
-print(10 in set_two)  # True
-print(1000 in set_one)  # False
-# # TypeError: unhashable type: 'list'
-# print([] in set_one)
+try:
+    print(image_info({'image_id': 123}))
+except TypeError as e:
+    print(e)
 
+# def divide(a, b):
+#     if b == 0:
+#         raise ZeroDivisionError("Попытка деления на ноль")
+#     return a / b
+
+# try:
+#     result = divide(5, 0)
+# except ZeroDivisionError as e:
+#     print(f"Ошибка: {e}")

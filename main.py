@@ -1,18 +1,29 @@
-my_dict = {}
+# a = {7, 8, 9, 10}
 
-key_1 = input("Please enter key 1: ")
-value_1 = input("Please enter value 1: ")
+# a.add(13)
 
-my_dict[key_1] = value_1
+# b = {7, 13, 14, 15, 16}
 
-key_2 = input("Please enter key 2: ")
-value_2 = input("Please enter value 2: ")
+# c = (a | b) - (a & b)
 
-my_dict[key_2] = value_2
+# d = list(c)
 
-key_3 = input("Please enter key 3: ")
-value_3 = input("Please enter value 3: ")
+# print(d)
 
-my_dict[key_3] = value_3
+#  ========================================================================================================================================================
 
-print(my_dict)
+
+set_one = {10, 5, 7, 15, 100}
+
+set_one.add(200)
+
+set_two = {20, 7, 300, 100, 200}
+
+intersected_set = set_one.intersection(set_two)
+print(intersected_set)
+
+my_list = list(intersected_set)
+print(my_list)
+
+print(set_one)
+print(set_two)

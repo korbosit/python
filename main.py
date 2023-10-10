@@ -1,33 +1,18 @@
-# my_list = ['abc', 5, 10.5, True, [1]]
+my_dict = {}
 
-# print(my_list)
+key_1 = input("Please enter key 1: ")
+value_1 = input("Please enter value 1: ")
 
-# my_list.pop(2)
+my_dict[key_1] = value_1
 
-# print(len(my_list))
-# print(my_list)
+key_2 = input("Please enter key 2: ")
+value_2 = input("Please enter value 2: ")
 
-# my_list.reverse()
-# print(my_list)
+my_dict[key_2] = value_2
 
-# other_list = [True, {'a': 10}]
+key_3 = input("Please enter key 3: ")
+value_3 = input("Please enter value 3: ")
 
-# my_list.extend(other_list)
+my_dict[key_3] = value_3
 
-# print(my_list)
-# print(other_list)
-
-#  ========================================================================================================================================================
-
-
-first_list = [10, True, 'abc']
-second_list = [[1, 2], {'b': True}]
-
-merged_list = first_list + second_list
-print(merged_list)
-
-other_merged_list = first_list.__add__(second_list)
-print(other_merged_list)
-
-print(first_list)
-print(second_list)
+print(my_dict)

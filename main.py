@@ -1,22 +1,27 @@
-def image_info(img):
-    if ('image_id' not in img) or ('image_title' not in img):
-        raise TypeError("Keys image_id and image_title must be present")
-    return f"Image '{img['image_title']}' has id {img['image_id']}"
+def route_info(route):
+    if ('distance' in route) and (type(route['distance']) == int):
+        return f"Distance to your destination is {route['distance']}"
+
+    if ('speed' in route) and ('time' in route):
+        return f"Distance to your destination is {route['speed'] * route['time']}"
+
+    return "No distance info is available"
+
+# def route_info(route):
+#     if ('distance' in route) and (type(route['distance']) == int):
+#         route_info = f"Distance to your destination is {route['distance']}"
+#     elif ('speed' in route) and ('time' in route):
+#         route_info = f"Distance to your destination is {route['speed'] * route['time']}"
+#     else:
+#         route_info = "No distance info is available"
+#     return route_info
 
 
-print(image_info({'image_title': 'My cat', 'image_id': 123}))
+print(route_info({'distance': 15}))
+# Distance to your destination is 15
 
-try:
-    print(image_info({'image_id': 123}))
-except TypeError as e:
-    print(e)
+print(route_info({'speed': 20, 'time': 3}))
+# Distance to your destination is 60
 
-# def divide(a, b):
-#     if b == 0:
-#         raise ZeroDivisionError("Попытка деления на ноль")
-#     return a / b
-
-# try:
-#     result = divide(5, 0)
-# except ZeroDivisionError as e:
-#     print(f"Ошибка: {e}")
+print(route_info({'my_speed': 30}))
+# No distance info is available

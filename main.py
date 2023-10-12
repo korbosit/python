@@ -1,24 +1,26 @@
-# def dict_to_list(dict_to_convert):
-#     list_for_convertion = []
-#     for k, v in dict_to_convert.items():
-#         if type(v) == int:
-#             v *= 2
-#         list_for_convertion.append((k, v))
-#     return list_for_convertion
-
-
-# print(dict_to_list({'a': 5, 'b': [], 'c': 100}))
+# while True:
+#     num_one = int(input("Enter first number: "))
+#     num_two = int(input("Enter second number: "))
+#     res = num_one / num_two
+#     print(f"The result of dividing the first number by the second: {res}")
+#     question = input("Do you want to continue?: ")
+#     if question == "yes":
+#         continue
+#     break
 
 #  ========================================================================================================================================================
 
-def filter_list(list_to_filter, value_type):
-    filtered_list = []
-    for element in list_to_filter:
-        if type(element) == value_type:
-            filtered_list.append(element)
+while True:
+    try:
+        num_one = float(input("Please enter number one: "))
+        num_two = float(input("Please enter number two: "))
+    except ValueError as e:
+        print(e)
+        print("You must enter numbers!")
+        continue
 
-    return filtered_list
+    print(num_one / num_two)
 
-print(filter_list([35, True, 'abc', 10], int))
-print(filter_list([35, True, 'abc', 10], str))
-print(filter_list([35, True, 'abc', 10], bool))
+    answer = input("Do you want to continue? (yes/no): ")
+    if answer == 'no':
+        break

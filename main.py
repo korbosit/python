@@ -1,27 +1,26 @@
-# my_motorbike = {
-#     'brand': 'bmw',
-#     'country': 'germany',
-#     'owner': 'bogdan'
-# }
+class Image:
+    def __init__(self, resolution, title, extension):
+        self.resolution = resolution
+        self.title = title
+        self.extension = extension
 
-# bike = {k: v.upper() for k, v in my_motorbike.items()}
+    def resize(self, new_resolution):
+        self.resolution = new_resolution
 
-# print(bike)
-# print(my_motorbike)
+    def __str__(self):
+        return f"{self.title}.{self.extension}"
 
-#  ========================================================================================================================================================
 
-# my_list = ['Vova', 'Timka', 'Alfa', 'Beta', 'a', 'b', 'c', 'd', 'egd']
+first_img = Image('1920x1080', "My dog", 'jpg')
 
-# new_my_list = [e for e in my_list if len(e) >= 3]
+print(first_img.resolution)
+print(first_img.title)
+print(first_img.extension)
 
-# print(new_my_list)
+first_img.resize('4000x3000')
 
-#  ========================================================================================================================================================
+print(first_img.resolution)
 
-# my_motorbike = ['BMW', 'Germany', 'Bogdan']
+second_img = Image('8000x5000', "My cat", 'png')
 
-# bike = [el for el in my_motorbike if len(el) > 3]
-
-# print(bike)
-# print(my_motorbike)
+print(first_img)

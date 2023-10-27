@@ -1,41 +1,52 @@
-from pathlib import Path
+import re
 
-# Создаем путь к папке files
-files_dir = Path('files')
-# если папка отсуттсвует, чтобы не выдавало ошибки, если присутствует то мы ее заново не пересоздаем и не перезаписываем ее содержимое
-files_dir.mkdir(exist_ok=True)
+def check_password(password):
+    # создаем паттерны
+    # проверка длины пароля
+    # можно использовать проверку len(password)
+    # проверка что в строке минимум 8 сиволов, пр  этом пробелы знаки @  и переходы на новую строку не считаются об это говорит /S
+    # length_regexp = r"\S{8,}"
+    # length_pattern = re.compile(length_regexp)
+    length_pattern = re.compile(r"\S{8,}")
+    # далее моздаем паттерн для проверки что есть буквы в нижнем регистре
+    lowercase_pattern = re.compile(r"[a-z]+")
+    # паттерн для проверки что есть буквы в верхнем регистре
+    uppercase_pattern = re.compile(r"[A-Z]+")
+    # паттерн для проверки наличия хотябы 1 цифры
+    number_pattern = re.compile(r"[0-9]+")
+    # паттерн для проверки хотя бы одного символа в пароле
+    special_symbol_pattern = re.compile(r"[@%#!&*^]+")
+    no_whitespace_pattern = re.compile(r"^\S*$")
 
-# создаем пути для 2-х файлов
-first_file = Path(files_dir / 'first.txt')
-second_file = Path(files_dir / 'second.txt')
+    # проверка паролей согласно паттернов
+    if not re.fullmatch(no_whitespace_pattern, password):
+         return (False, "No whitespaces allowed in the password")
+    if not re.fullmatch(length_pattern, password):
+        return (False, "Password must have at least 8 symbols")
+    if not re.fullmatch(lowercase_pattern, password):
+        return (False, "Password must have at least one lowercase latter")
+    if not re.fullmatch(uppercase_pattern, password):
+        return (False, "Password must have at least one uppercase latter")
+    if not re.fullmatch(number_pattern, password):
+        return (False, "Password must have at least one number")
+    if not re.fullmatch(special_symbol_pattern, password):
+        return (False, "Password must have at least one special symbolr @%#!&*^")
 
-# Создаем файл first.txt и записываем в него данные, открываем в режиме записи и формируем две строки
-with open(first_file, 'w') as f:
-    f.write("First line\n")
-    f.write("Second line\n")
+    return (True, "Password is valid!")
 
-# Создаем файл second.txt и записываем в него данные
-with open(second_file, 'w') as f:
-    lines = [
-        "First line in second file",
-        "Second line in second file",
-        "Last line in second file"
-    ]
 
-    for line in lines:
-        f.write(line + '\n')
+# print(check_password('asdfASD 2342  !234'))
+# print(check_password('123'))
+# print(check_password('12345678'))
+# print(check_password('1234567a'))
+# print(check_password('asdbADGAG'))
+# print(check_password('3234sfASDF'))
+# print(check_password('asdfASDF3242!&'))
 
-# Читаем и выводим содержимое файла first.txt
-with open(first_file) as f:
-    print(f.read())
-
-with open(second_file) as f:
-    for line in f.readlines():
-        print(line)
-
-# удаляем оба файла
-first_file.unlink()
-second_file.unlink()
-
-# удаление директории
-files_dir.rmdir()
+while True:
+    password = input("Please enter password: ")
+    password_check_res = check_password(password)
+    if password_check_res[0]:
+        print(password_check_res[1])
+        break
+    print(password_check_res[1])
